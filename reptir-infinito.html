@@ -1,0 +1,37 @@
+<style>
+    :root {
+        --repeticoes: 23;
+    }
+
+    .container-amor {
+        background: #000;
+        padding: 20px;
+        border: 1px solid #ff00ff;
+        font-family: monospace;
+        color: #00ff41;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    /* Criamos uma estrutura que repete o conteúdo */
+    .palavra-amor::before {
+        content: "amor ";
+        color: #ff00ff;
+    }
+</style>
+
+<div class="container-amor">
+    <!-- Para repetir sem JS ou PHP, o HTML precisa dos 23 spans -->
+    <!-- Dica: Podes gerar isto rapidamente em editores como o VS Code usando: span.palavra-amor*23 -->
+    <script>
+        // Uma pequena ajuda em JS apenas para não escreveres 23 vezes à mão
+        for (let i = 0; i < 23; i++) {
+            document.write('<span class="palavra-amor"></span>');
+        }
+    </script>
+    
+    <div style="width: 100%; margin-top: 10px; color: #00ff41;">
+        "seja feliz por favor"
+    </div>
+</div>
