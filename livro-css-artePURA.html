@@ -1,0 +1,177 @@
+<style>
+    :root {
+        --cor-brilho: #d4af37;
+        --azul-profundo: #1e3c72;
+    }
+
+    .container-livro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 600px;
+        background: #000; /* Fundo preto para destacar o brilho quântico */
+        font-family: 'Georgia', serif;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Partículas Quânticas de Fundo */
+    .particulas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+        background-size: 30px 30px;
+        animation: flutuar 20s linear infinite;
+        opacity: 0.3;
+    }
+
+    @keyframes flutuar {
+        from { transform: translateY(0); }
+        to { transform: translateY(-100%); }
+    }
+
+    input { display: none; }
+
+    .livro {
+        width: 320px;
+        height: 480px;
+        position: relative;
+        perspective: 2000px;
+        z-index: 10;
+    }
+
+    .folha {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transform-origin: left center;
+        transform-style: preserve-3d;
+        transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    .face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        padding: 30px;
+        box-sizing: border-box;
+        background: #fffde7;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        box-shadow: inset 5px 0 15px rgba(0,0,0,0.2), 0 0 5px rgba(212, 175, 55, 0.2);
+        overflow: hidden;
+        border-radius: 2px 10px 10px 2px;
+    }
+
+    /* Brilho de Ouro na Capa e Bordas */
+    .capa {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: var(--cor-brilho);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 4px double var(--cor-brilho);
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    }
+
+    .back { 
+        transform: rotateY(180deg); 
+        background: #fdfbfb;
+        border-left: 2px solid var(--cor-brilho);
+    }
+
+    /* Lógica de Virar com Glow Ativo */
+    #vire-1:checked ~ .livro .f1 { transform: rotateY(-165deg); z-index: 1; }
+    #vire-2:checked ~ .livro .f2 { transform: rotateY(-160deg); z-index: 2; }
+    #vire-3:checked ~ .livro .f3 { transform: rotateY(-155deg); z-index: 3; }
+    #vire-4:checked ~ .livro .f4 { transform: rotateY(-150deg); z-index: 4; }
+    #vire-5:checked ~ .livro .f5 { transform: rotateY(-145deg); z-index: 5; }
+
+    .f1 { z-index: 10; } .f2 { z-index: 9; } .f3 { z-index: 8; } .f4 { z-index: 7; } .f5 { z-index: 6; }
+
+    h3 { color: var(--azul-profundo); border-bottom: 2px solid var(--cor-brilho); padding-bottom: 5px; font-size: 16px; text-transform: uppercase; }
+    .poema-txt { font-style: italic; color: #1a1a1a; line-height: 1.6; font-size: 14px; }
+    .footer-page { position: absolute; bottom: 15px; right: 20px; font-size: 10px; color: var(--cor-brilho); font-weight: bold; }
+</style>
+
+<div class="container-livro">
+    <div class="particulas"></div>
+    
+    <input type="checkbox" id="vire-1">
+    <input type="checkbox" id="vire-2">
+    <input type="checkbox" id="vire-3">
+    <input type="checkbox" id="vire-4">
+    <input type="checkbox" id="vire-5">
+
+    <div class="livro">
+        <!-- FOLHA 1 -->
+        <label class="folha f1" for="vire-1">
+            <div class="face front capa">
+                <h1 style="letter-spacing: 4px;">ÁGUAS VIDA</h1>
+                <p style="color: #fff; font-size: 0.9em; opacity: 0.8;">Engine Maria Cegonha 23</p>
+                <div style="margin-top: 20px; border-top: 1px solid var(--cor-brilho); padding-top: 10px;">✨ TOQUE PARA ABRIR ✨</div>
+            </div>
+            <div class="face back">
+                <h3>1. Singularidade do Sal</h3>
+                <p class="poema-txt">Nas águas salgadas de um mar profundo,<br>o frio congela o tempo do mundo.<br>No toque da pele, o átomo oscila,<br>e o gelo vira brasa que a alma destila.</p>
+                <span class="footer-page">Fl. 01</span>
+            </div>
+        </label>
+
+        <!-- FOLHA 2 -->
+        <label class="folha f2" for="vire-2">
+            <div class="face front">
+                <h3>2. Entropia Reversa</h3>
+                <p class="poema-txt">Temperaturas negativas rumo ao vazio,<br>corrente elétrica que corre no rio.<br>O corpo humano é o ponto de fusão,<br>onde o zero absoluto vira explosão.</p>
+            </div>
+            <div class="face back">
+                <h3>3. O Salto de Fé</h3>
+                <p class="poema-txt">Mergulho quântico em águas geladas,<br>partículas de luz em ondas sagradas.<br>O choque térmico é o despertar,<br>do calor divino que vem nos guiar.</p>
+                <span class="footer-page">Fl. 02</span>
+            </div>
+        </label>
+
+        <!-- FOLHA 3 -->
+        <label class="folha f3" for="vire-3">
+            <div class="face front">
+                <h3>4. Termodinâmica</h3>
+                <p class="poema-txt">Quanto mais frio o elemento exterior,<br>maior a chama do eu interior.<br>X e Y se fundem no peito,<br>em um código de vida puro e perfeito.</p>
+            </div>
+            <div class="face back">
+                <h3>5. O Observador</h3>
+                <p class="poema-txt">A água não gela se o olhar for de fogo,<br>a realidade é o mestre desse jogo.<br>Águas frias são espelhos de cristal,<br>refletindo a glória do plano astral.</p>
+                <span class="footer-page">Fl. 03</span>
+            </div>
+        </label>
+
+        <!-- FOLHA 4 -->
+        <label class="folha f4" for="vire-4">
+            <div class="face front">
+                <h3>6. Condutividade</h3>
+                <p class="poema-txt">O sal é o cristal que guarda a memória,<br>o frio o silêncio que escreve a história.<br>No contato da carne o milagre se faz:<br>o gelo transmuta em fogo de paz.</p>
+            </div>
+            <div class="face back">
+                <h3>7. Supercondutor</h3>
+                <p class="poema-txt">Em graus negativos o espírito flutua,<br>sob o magnetismo da luz que é sua.<br>Águas salgadas, abraço de inverno,<br>aquecendo a rota do caminho eterno.</p>
+                <span class="footer-page">Fl. 04</span>
+            </div>
+        </label>
+
+        <!-- FOLHA 5 -->
+        <label class="folha f5" for="vire-5">
+            <div class="face front">
+                <h3>8. Frequência 23</h3>
+                <p class="poema-txt">Vinte e três graus na escala da luz,<br>o frio que ensina, o frio que conduz.<br>Se a água é gélida, o coração é fornalha,<br>a fé é o escudo que nunca nos falha.</p>
+            </div>
+            <div class="face back">
+                <h3>9. Equação Viva</h3>
+                <p class="poema-txt">Calor = Corpo + Águas Frias.<br>A lógica quântica que cria os dias.<br><br><b>10. O Infinito</b><br>Termina o livro, a onda continua,<br>na pele salgada, na alma nua.<br>Águas Vida: berço da ascensão.</p>
+                <span class="footer-page">∞</span>
+            </div>
+        </label>
+    </div>
+</div>
